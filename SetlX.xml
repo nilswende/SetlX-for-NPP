@@ -1,0 +1,1073 @@
+<!--
+    SetlX code completion for Notepad++
+    Based on SetlX v2.5.1
+
+    Copyright (C) 2015  Nils Wende
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses>
+-->
+<!--
+    Put this file into %PROGRAMFILES(X86)%\Notepad++\plugins\APIs\
+-->
+<?xml version="1.0" encoding="Windows-1252" ?>
+<NotepadPlus>
+	<AutoComplete language="SetlX">
+		<Environment ignoreCase="no" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" />
+
+		<!-- Keywords -->
+		<KeyWord name="afterBacktrack" />
+		<KeyWord name="assert" />
+		<KeyWord name="backtrack" />
+		<KeyWord name="break" />
+		<KeyWord name="case" />
+		<KeyWord name="catch" />
+		<KeyWord name="catchLng" />
+		<KeyWord name="catchUsr" />
+		<KeyWord name="check" />
+		<KeyWord name="continue" />
+		<KeyWord name="default" />
+		<KeyWord name="do" />
+		<KeyWord name="else" />
+		<KeyWord name="exit" />
+		<KeyWord name="for" />
+		<KeyWord name="if" />
+		<KeyWord name="match" />
+		<KeyWord name="regex" />
+		<KeyWord name="return" />
+		<KeyWord name="rw" />
+		<KeyWord name="scan" />
+		<KeyWord name="static" />
+		<KeyWord name="switch" />
+		<KeyWord name="throw" />
+		<KeyWord name="try" />
+		<KeyWord name="while" />
+
+		<KeyWord name="cachedProcedure" />
+		<KeyWord name="class" />
+		<KeyWord name="closure" />
+		<KeyWord name="procedure" />
+
+		<KeyWord name="false" />
+		<KeyWord name="om" />
+		<KeyWord name="true" />
+
+		<KeyWord name="exists" />
+		<KeyWord name="forall" />
+		<KeyWord name="in" />
+		<KeyWord name="notin" />
+
+		<!-- Functions on Sets and Lists -->
+		<KeyWord name="arb" func="yes">
+			<Overload retVal="element" descr="Returns an arbitrary element of s.">
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns an arbitrary element of l.">
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns an arbitrary element of s.">
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="collect" func="yes">
+			<Overload retVal="binary relation" descr="Returns a binary relation r such that for every element x in l, r contains a pair of the form [x, c], where c is the number of occurrences of x in l.">
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="first" func="yes">
+			<Overload retVal="element" descr="Returns the smallest element of s in respect to the function 'compare'." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the first element of l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the first element of s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="last" func="yes">
+			<Overload retVal="element" descr="Returns the biggest element of s in respect to the function 'compare'." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the last element of l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the last element of s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="from" func="yes">
+			<Overload retVal="element" descr="Returns an arbitrary element of s. This element is removed from s." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns an arbitrary element of l. This element is removed from l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns an arbitrary element of s. This element is removed from s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="fromB" func="yes">
+			<Overload retVal="element" descr="Returns the smallest element of s in respect to the function 'compare'. This element is removed from s." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the first element of l. This element is removed from l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the first element of s. This element is removed from s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="fromE" func="yes">
+			<Overload retVal="element" descr="Returns the biggest element of s in respect to the function 'compare'. This element is removed from s." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the last element of l. This element is removed from l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the last element of s. This element is removed from s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="domain" func="yes">
+			<Overload retVal="set" descr="Returns the domain of r." >
+				<Param name="binary relation r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="max" func="yes">
+			<Overload retVal="element" descr="Returns the biggest element of s, if s is a set containing only numbers.">
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the biggest element of l, if l is a list containing only numbers.">
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="min" func="yes">
+			<Overload retVal="element" descr="Returns the smallest element of s, if s is a set containing only numbers." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns the smallest element of l, if l is a list containing only numbers." >
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="pow" func="yes">
+			<Overload retVal="set" descr="Returns the powerset of s." >
+				<Param name="set s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="range" func="yes">
+			<Overload retVal="set" descr="Returns the range of r." >
+				<Param name="binary relation r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="reverse" func="yes">
+			<Overload retVal="list" descr="Returns a list containing the elements of l in reverse order." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="string" descr="Returns a string containing the elements of s in reverse order." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="sort" func="yes">
+			<Overload retVal="list" descr="Returns l sorted in ascending order." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="string" descr="Returns s sorted in ascending order." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Functions for String Manipulation -->
+		<KeyWord name="char" func="yes">
+			<Overload retVal="string" descr="Returns the character associated with the ASCII code n." >
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="endsWith" func="yes">
+			<Overload retVal="boolean" descr="Returns true if t is a suffix of s." >
+				<Param name="string s" />
+				<Param name="string t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="eval" func="yes">
+			<Overload retVal="SetlX expression" descr="Returns the evaluation of s as SetlX expression in the current variable context." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="execute" func="yes">
+			<Overload retVal="SetlX statement" descr="Returns true if the evaluation of s as SetlX expression in the current variable context is successfully executed." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="matches" func="yes">
+			<Overload retVal="boolean" descr="Returns true if r matches s." >
+				<Param name="string s" />
+				<Param name="regular expression r" />
+			</Overload>
+			<Overload retVal="list" descr="Returns a list of substrings of s if r matches s." >
+				<Param name="string s" />
+				<Param name="regular expression r" />
+				<Param name="true" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="join" func="yes">
+			<Overload retVal="string" descr="Returns the string representation of all elements of s with t as seperator." >
+				<Param name="set s" />
+				<Param name="string t" />
+			</Overload>
+			<Overload retVal="string" descr="Returns the string representation of all elements of l with t as seperator." >
+				<Param name="list l" />
+				<Param name="string t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="replace" func="yes">
+			<Overload retVal="string" descr="Returns the string produced by replacing all substrings of s matching r with t." >
+				<Param name="string s" />
+				<Param name="regular expression r" />
+				<Param name="string t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="replaceFirst" func="yes">
+			<Overload retVal="string" descr="Returns the string produced by replacing the first substring of s matching r with t." >
+				<Param name="string s" />
+				<Param name="regular expression r" />
+				<Param name="string t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="split" func="yes">
+			<Overload retVal="list" descr="Returns the list produced by splitting s at all occurrences of the character t." >
+				<Param name="string s" />
+				<Param name="string t" />
+			</Overload>
+			<Overload retVal="list" descr="Returns the list produced by splitting s at all occurrences of the regular expression r." >
+				<Param name="string s" />
+				<Param name="regular expression r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="str" func="yes">
+			<Overload retVal="string" descr="Returns the string representation of the argument." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="toLowerCase" func="yes">
+			<Overload retVal="string" descr="Returns the string produced by converting all characters of s to lower case." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="toUpperCase" func="yes">
+			<Overload retVal="string" descr="Returns the string produced by converting all characters of s to upper case." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="trim" func="yes">
+			<Overload retVal="string" descr="Returns s without any leading or trailing white space characters." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Functions for Term Manipulation -->
+		<KeyWord name="args" func="yes">
+			<Overload retVal="list" descr="Returns the list of all arguments of t." >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="evalTerm" func="yes">
+			<Overload retVal="SetlX expression" descr="Returns the evaluation of t as SetlX expression in the current variable context." >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="fct" func="yes">
+			<Overload retVal="functor" descr="Returns the functor of t." >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="getTerm" func="yes">
+			<Overload retVal="term" descr="Returns a term representing v." >
+				<Param name="value v" />
+			</Overload>
+			<Overload retVal="set" descr="Returns the set of all elements of s transformed to terms." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="list" descr="Returns the list of all elements of l transformed to terms." >
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="makeTerm" func="yes">
+			<Overload retVal="term" descr="Returns a term with F as functor and the elements of l as its arguments." >
+				<Param name="functor F" />
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="canonical" func="yes">
+			<Overload retVal="string" descr="Returns the internal representation of t in setlX." >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="parse" func="yes">
+			<Overload retVal="term" descr="Returns s parsed into a term." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="parseStatements" func="yes">
+			<Overload retVal="SetlX statements" descr="Returns s parsed as a sequence of SetlX statements." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isVariable" func="yes">
+			<Overload retVal="boolean" descr="Returns true if t represents a variable." >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<!-- Library Functions for Term Manipulation -->
+		<KeyWord name="toTerm" func="yes">
+			<Overload retVal="term" descr="Simplifies t that was produced by the function 'parse'" >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="parseTerm" func="yes">
+			<Overload retVal="term" descr="Parses s into a term and returns it simplified." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="fromTerm" func="yes">
+			<Overload retVal="term" descr="Translates t into the internal structure required by the function 'evalTerm'" >
+				<Param name="term t" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Mathematical Functions -->
+		<KeyWord name="abs" func="yes">
+			<Overload retVal="number" descr="Returns the absolute value of x." >
+				<Param name="number x" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ceil" func="yes">
+			<Overload retVal="int" descr="Returns the smallest integer greater than or equal to x." >
+				<Param name="number x" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="floor" func="yes">
+			<Overload retVal="int" descr="Returns the biggest integer less than or equal to x." >
+				<Param name="number x" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="mathConst" func="yes">
+			<Overload retVal="number" descr="Returns the mathematical constant s.">
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nextProbablePrime" func="yes">
+			<Overload retVal="int" descr="Returns the next probable prime number greater than n." >
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="int" func="yes">
+			<Overload retVal="int" descr="Returns s as an integer." >
+				<Param name="string s" />
+			</Overload>
+			<Overload retVal="int" descr="Returns r as an integer. The decimal places are truncated." >
+				<Param name="double r" />
+			</Overload>
+			<Overload retVal="int" descr="Returns z." >
+				<Param name="int z" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="rational" func="yes">
+			<Overload retVal="rational" descr="Returns s as a rational number." >
+				<Param name="string s" />
+			</Overload>
+			<Overload retVal="rational" descr="Returns r as a rational number." >
+				<Param name="double r" />
+			</Overload>
+			<Overload retVal="rational" descr="Returns q." >
+				<Param name="rational q" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="double" func="yes">
+			<Overload retVal="double" descr="Returns s as a double." >
+				<Param name="string s" />
+			</Overload>
+			<Overload retVal="double" descr="Returns s as a double." >
+				<Param name="rational q" />
+			</Overload>
+			<Overload retVal="double" descr="Returns r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="sin" func="yes">
+			<Overload retVal="double" descr="Returns the sine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="cos" func="yes">
+			<Overload retVal="double" descr="Returns the cosine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="tan" func="yes">
+			<Overload retVal="double" descr="Returns the tangent of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="asin" func="yes">
+			<Overload retVal="double" descr="Returns the arcsine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="acos" func="yes">
+			<Overload retVal="double" descr="Returns the arccosine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="atan" func="yes">
+			<Overload retVal="double" descr="Returns the arctangent of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="atan2" func="yes">
+			<Overload retVal="double" descr="Returns the arctangent of y/x." >
+				<Param name="double y" />
+				<Param name="double x" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="hypot" func="yes">
+			<Overload retVal="double" descr="Returns the length of the hypotenuse of a triangle with the adjacent x and the opposite y." >
+				<Param name="double x" />
+				<Param name="double y" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="exp" func="yes">
+			<Overload retVal="double" descr="Returns Euler's number to the power of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="expm1" func="yes">
+			<Overload retVal="double" descr="Returns Euler's number to the power of r, subtracted by 1." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="log" func="yes">
+			<Overload retVal="double" descr="Returns the natural logarithm of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="log1p" func="yes">
+			<Overload retVal="double" descr="Returns the natural logarithm of r+1." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="log10" func="yes">
+			<Overload retVal="double" descr="Returns the decadic logarithm of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="sqrt" func="yes">
+			<Overload retVal="double" descr="Returns the square root of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="cbrt" func="yes">
+			<Overload retVal="double" descr="Returns the cubic root of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="round" func="yes">
+			<Overload retVal="int" descr="Returns r rounded to the next integer." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nDecimalPlaces" func="yes">
+			<Overload retVal="string" descr="Returns the string representation of q truncated to n decimal places." >
+				<Param name="rational q" />
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ulp" func="yes">
+			<Overload retVal="double" descr="Returns the difference between r and the smallest double greater than r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="signum" func="yes">
+			<Overload retVal="double" descr="Returns the sign of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="sinh" func="yes">
+			<Overload retVal="double" descr="Returns the hyperbolic sine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="cosh" func="yes">
+			<Overload retVal="double" descr="Returns the hyperbolic cosine of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="tanh" func="yes">
+			<Overload retVal="double" descr="Returns the hyperbolic tangent of r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isPrime" func="yes">
+			<Overload retVal="boolean" descr="Returns true if n is prime." >
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isProbablePrime" func="yes">
+			<Overload retVal="boolean" descr="Returns true if n is prime. Uses a probabilistic method that can yield false positives." >
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Generating Random Numbers and Permutations -->
+		<KeyWord name="random" func="yes">
+			<Overload retVal="double" descr="Returns a random double between (and including) 0 and 1." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="double" descr="Returns a random double between (and including) 0 and 1, multiplied by r." >
+				<Param name="double r" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="resetRandom" func="yes">
+			<Overload retVal="void" descr="Resets the random number generator to its initial state." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="rnd" func="yes">
+			<Overload retVal="element" descr="Returns a random element of s." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="element" descr="Returns a random element of l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="int" descr="Returns a random natural number between (and including) 0 and n." >
+				<Param name="int n" />
+			</Overload>
+			<Overload retVal="int" descr="Returns a random negative number between (and including) n and 0." >
+				<Param name="int i" />
+			</Overload>
+			<Overload retVal="rational" descr="Returns a random rational number between (and including) 0 and a/b, with n different possibilities." >
+				<Param name="rational a/b" />
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="shuffle" func="yes">
+			<Overload retVal="list" descr="Shuffles l randomly." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="string" descr="Shuffles s randomly." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nextPermutation" func="yes">
+			<Overload retVal="list" descr="Returns the next permutation of l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="string" descr="Returns the next permutation of s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="permutations" func="yes">
+			<Overload retVal="set" descr="Returns a set of all permutations of s." >
+				<Param name="set s" />
+			</Overload>
+			<Overload retVal="set" descr="Returns a set of all permutations of l." >
+				<Param name="list l" />
+			</Overload>
+			<Overload retVal="set" descr="Returns a set of all permutations of s." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Type Checking Functions -->
+		<KeyWord name="isBoolean" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a Boolean value." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isDouble" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a double." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isError" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is an error object." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isInfinite" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument represents positive or negative infinity." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isInteger" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is an integer." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isList" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a list." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isMap" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a binary relation such that each element in its domain is uniquely mapped to an element in its range." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isNumber" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a number." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isProcedure" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a procedure." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isRational" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a rational number." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isSet" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a set." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isString" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a string." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isTerm" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is a term." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="isObject" func="yes">
+			<Overload retVal="boolean" descr="Returns true if the argument is an object." >
+				<Param name="anything" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Debugging -->
+		<KeyWord name="trace" func="yes">
+			<Overload retVal="void" descr="Toggles tracing." >
+				<Param name="boolean b" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="stop" func="yes">
+			<Overload retVal="0" descr="Produces a prompt to display the value of the entered variable name." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="0" descr="Produces a prompt to display the value of the entered variable name. id reminds the user of the location of the call." >
+				<Param name="string id" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="assert" func="yes">
+			<Overload retVal="void" descr="If condition is false, the program is terminated and msg is printed." >
+				<Param name="SetlX expression condition" />
+				<Param name="Error message msg" />
+			</Overload>
+		</KeyWord>
+		<!-- Library Functions for Debugging -->
+		<KeyWord name="tracer" func="yes">
+			<Overload retVal="tracer" descr="Creates a tracer." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="trace" func="yes">
+			<Overload retVal="procedure" descr="Traces p." >
+				<Param name="procedure p" />
+				<Param name="string name" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="untrace" func="yes">
+			<Overload retVal="procedure" descr="Stops tracing of the procedure with the given name." >
+				<Param name="string name" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="profiler" func="yes">
+			<Overload retVal="profiler" descr="Creates a profiler." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="profile" func="yes">
+			<Overload retVal="procedure" descr="Profiles the execution times of p." >
+				<Param name="procedure p" />
+				<Param name="string name" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="unprofile" func="yes">
+			<Overload retVal="procedure" descr="Stops profiling of the procedure with the given name." >
+				<Param name="string name" />
+			</Overload>
+		</KeyWord>
+
+		<!-- I/O Functions -->
+		<KeyWord name="appendFile" func="yes">
+			<Overload retVal="boolean" descr="Appends the strings inside l to the file in filePath." >
+				<Param name="string filePath" />
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ask" func="yes">
+			<Overload retVal="string" descr="Prints question and waits for user input. Returns the string with the entered index in l." >
+				<Param name="string question" />
+				<Param name="list answerList" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="deleteFile" func="yes">
+			<Overload retVal="boolean" descr="Deletes the file in filePath." >
+				<Param name="string filePath" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="get" func="yes">
+			<Overload retVal="string" descr="Waits for user input and returns the entered string." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="string" descr="Prints s, waits for user input and returns the entered string." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="load" func="yes">
+			<Overload retVal="boolean" descr="Executes the statements in the specified SetlX file." >
+				<Param name="string filePath" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="loadLibrary" func="yes">
+			<Overload retVal="boolean" descr="Loads the library filename." >
+				<Param name="string filename" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="multiLineMode" func="yes">
+			<Overload retVal="boolean" descr="Toggles multi line mode." >
+				<Param name="boolean flag" />
+			</Overload>
+			<Overload retVal="boolean" descr="Toggles multi line mode." >
+				<Param name="SetlX expression flag" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nPrint" func="yes">
+			<Overload retVal="void" descr="Prints its arguments to the standard output stream." >
+				<Param name="any number of anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="nPrintErr" func="yes">
+			<Overload retVal="void" descr="Prints its arguments to the standard error stream." >
+				<Param name="any number of anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="print" func="yes">
+			<Overload retVal="void" descr="Prints its arguments to the standard output stream and appends a new line." >
+				<Param name="any number of anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="printErr" func="yes">
+			<Overload retVal="void" descr="Prints its arguments to the standard error stream and appends a new line." >
+				<Param name="any number of anything" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="read" func="yes">
+			<Overload retVal="string" descr="Waits for user input and returns the entered string without leading or trailing white space characters." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="string" descr="Prints s, waits for user input and returns the entered string without leading or trailing white space characters." >
+				<Param name="string s" />
+			</Overload>
+			<Overload retVal="number" descr="Waits for user input and returns the entered number." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="number" descr="Prints s, waits for user input and returns the entered number." >
+				<Param name="string s" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="readFile" func="yes">
+			<Overload retVal="list" descr="Reads the file and returns a list containing a string for each line in the file." >
+				<Param name="string filePath" />
+			</Overload>
+			<Overload retVal="list" descr="Reads the file and returns a list containing a string for each line mentioned in lines." >
+				<Param name="string filePath" />
+				<Param name="list lines" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="writeFile" func="yes">
+			<Overload retVal="boolean" descr="Creates the file and writes each element of l in a new line." >
+				<Param name="string filePath" />
+				<Param name="list l" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="writeLibrary" func="yes">
+			<Overload retVal="void" descr="(Re)writes the default library matching the running setlX version into the library path." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="writeExamples" func="yes">
+			<Overload retVal="void" descr="(Re)writes the examples of the running setlX version into the supplied path." >
+				<Param name="string directoryPath" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Plotting Functions -->
+		<KeyWord name="plot_createCanvas" func="yes">
+			<Overload retVal="canvas" descr="Returns a canvas object that can be used for plotting." >
+				<Param name="void" />
+			</Overload>
+			<Overload retVal="canvas" descr="Returns a canvas object that can be used for plotting." >
+				<Param name="string title" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addBullets" func="yes">
+			<Overload retVal="bullets" descr="Adds points to c. Returns a reference to the added points." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+			</Overload>
+			<Overload retVal="bullets" descr="Adds points to c. Returns a reference to the added points." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="list color" />
+			</Overload>
+			<Overload retVal="bullets" descr="Adds points to c. Returns a reference to the added points." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="double size" />
+			</Overload>
+			<Overload retVal="bullets" descr="Adds points to c. Returns a reference to the added points." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="list color" />
+				<Param name="double size" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addGraph" func="yes">
+			<Overload retVal="graph" descr="Plots the graph of a function. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string function" />
+				<Param name="string label" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots the graph of a function. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string function" />
+				<Param name="string label" />
+				<Param name="list color" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots the graph of a function. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string function" />
+				<Param name="string label" />
+				<Param name="boolean fill" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots the graph of a function. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string function" />
+				<Param name="string label" />
+				<Param name="list color" />
+				<Param name="boolean fill" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addListGraph" func="yes">
+			<Overload retVal="graph" descr="Plots points and connects them via straight lines. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="string label" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots points and connects them via straight lines. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="string label" />
+				<Param name="list color" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots points and connects them via straight lines. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="string label" />
+				<Param name="boolean fill" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots points and connects them via straight lines. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="string label" />
+				<Param name="list color" />
+				<Param name="boolean fill" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addParamGraph" func="yes">
+			<Overload retVal="graph" descr="Plots a parametric curve. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string x-function" />
+				<Param name="string y-function" />
+				<Param name="string label" />
+				<Param name="list limits" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots a parametric curve. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string x-function" />
+				<Param name="string y-function" />
+				<Param name="string label" />
+				<Param name="list limits" />
+				<Param name="list color" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots a parametric curve. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string x-function" />
+				<Param name="string y-function" />
+				<Param name="string label" />
+				<Param name="list limits" />
+				<Param name="boolean fill" />
+			</Overload>
+			<Overload retVal="graph" descr="Plots a parametric curve. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="string x-function" />
+				<Param name="string y-function" />
+				<Param name="string label" />
+				<Param name="list limits" />
+				<Param name="list color" />
+				<Param name="boolean fill" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addBarChart" func="yes">
+			<Overload retVal="graph" descr="Plots a bar chart. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list values" />
+				<Param name="list labels" />
+				<Param name="string name" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addPieChart" func="yes">
+			<Overload retVal="graph" descr="Plots a pie chart. Returns a reference to the added graph." >
+				<Param name="canvas c" />
+				<Param name="list values" />
+				<Param name="list labels" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_addLabel" func="yes">
+			<Overload retVal="graph" descr="Adds a label to c at the given coordinates. Returns a reference to the added label." >
+				<Param name="canvas c" />
+				<Param name="list coordinates" />
+				<Param name="string label" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_defineTitle" func="yes">
+			<Overload retVal="void" descr="Adds a title to c." >
+				<Param name="canvas c" />
+				<Param name="string title" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_exportCanvas" func="yes">
+			<Overload retVal="void" descr="Exports c as PNG file." >
+				<Param name="canvas c" />
+				<Param name="string filePath" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_labelAxis" func="yes">
+			<Overload retVal="void" descr="Changes the labels of both axes." >
+				<Param name="canvas c" />
+				<Param name="string xLabel" />
+				<Param name="string yLabel" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_legendVisible" func="yes">
+			<Overload retVal="void" descr="Shows or hides the legends of c." >
+				<Param name="canvas c" />
+				<Param name="boolean showLegend" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_modScale" func="yes">
+			<Overload retVal="void" descr="Changes the scale of both axes." >
+				<Param name="canvas c" />
+				<Param name="list xLimits" />
+				<Param name="list yLimits" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_modScaleType" func="yes">
+			<Overload retVal="void" descr="Changes the scaling type of both axes." >
+				<Param name="canvas c" />
+				<Param name="string xType" />
+				<Param name="string yType" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_removeGraph" func="yes">
+			<Overload retVal="void" descr="Removes a graph or chart from c." >
+				<Param name="canvas c" />
+				<Param name="reference graph" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="plot_modSize" func="yes">
+			<Overload retVal="void" descr="Changes the size of c." >
+				<Param name="canvas c" />
+				<Param name="list size" />
+			</Overload>
+		</KeyWord>
+
+		<!-- Miscellaneous Functions -->
+		<KeyWord name="abort" func="yes">
+			<Overload retVal="void" descr="Aborts the execution of the current function by raising the exception specified in the argument." >
+				<Param name="argument" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="cacheStats" func="yes">
+			<Overload retVal="set" descr="Returns a set containing statistics about f." >
+				<Param name="cachedProcedure f" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="clearCache" func="yes">
+			<Overload retVal="void" descr="Frees the memory associated with the cache of f." >
+				<Param name="cachedProcedure f" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="compare" func="yes">
+			<Overload retVal="int" descr="Returns -1 if x is less than y, 0 if x is equal to y, 1 if x is greater than y." >
+				<Param name="number x" />
+				<Param name="number y" />
+			</Overload>
+			<Overload retVal="int" descr="Returns -1 if s is lexicographically less than t, 0 if s is equal to t, 1 if s is greater than t." >
+				<Param name="set s" />
+				<Param name="set t" />
+			</Overload>
+			<Overload retVal="int" descr="Returns -1 if l is lexicographically less than m, 0 if l is equal to m, 1 if l is greater than m." >
+				<Param name="list l" />
+				<Param name="list m" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="getOsID" func="yes">
+			<Overload retVal="string" descr="Returns an identifier for the operating system setlX is running on." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="getScope" func="yes">
+			<Overload retVal="term" descr="Returns a term representing the current scope." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="logo" func="yes">
+			<Overload retVal="int" descr="Prints the SetlX logo." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="now" func="yes">
+			<Overload retVal="int" descr="Returns the number of milliseconds that have elapsed since the beginning of the Unix epoch." >
+				<Param name="void" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="run" func="yes">
+			<Overload retVal="list" descr="Executes a shell command." >
+				<Param name="shell command" />
+			</Overload>
+		</KeyWord>
+		<KeyWord name="sleep" func="yes">
+			<Overload retVal="void" descr="Pauses the execution of the process running setlX for n milliseconds." >
+				<Param name="int n" />
+			</Overload>
+		</KeyWord>
+	</AutoComplete>
+</NotepadPlus>
