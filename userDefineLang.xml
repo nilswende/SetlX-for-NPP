@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses>
 -->
 <!--
-    Put this file into %APPDATA%\Notepad++\ or integrate the UserLang element into your existing userDefineLang.xml
+    Put this file into %APPDATA%\Notepad++\ or integrate the <UserLang> element into your existing userDefineLang.xml
 -->
 <NotepadPlus>
     <UserLang name="SetlX" ext="stlx" udlVersion="2.1">
