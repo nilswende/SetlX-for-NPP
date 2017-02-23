@@ -35,7 +35,7 @@
             <Keywords name="Numbers, suffix1"></Keywords>
             <Keywords name="Numbers, suffix2"></Keywords>
             <Keywords name="Numbers, range"></Keywords>
-            <Keywords name="Operators1">( ) { } ; : | , += -= *= /= \= %= := . [ ] _ &lt;==&gt; &lt;!=&gt; |-&gt; |=&gt; =&gt; || &amp;&amp; == != &lt; &lt;= &gt; &gt;= + - * / \ % &gt;&lt; +/ */ ** # ! &lt;&lt; &gt;&gt; ..</Keywords>
+            <Keywords name="Operators1">&lt;==&gt; &lt;!=&gt; |-&gt; |=&gt; += -= *= /= \= %= := =&gt; || &amp;&amp; == != &lt;= &gt;= &gt;&lt; +/ */ ** &lt;&lt; &gt;&gt; .. ( ) { } ; : | , . [ ] _ &lt; &gt; + - * / \ % # !</Keywords>
             <Keywords name="Operators2"></Keywords>
             <Keywords name="Folders in code1, open"></Keywords>
             <Keywords name="Folders in code1, middle"></Keywords>
